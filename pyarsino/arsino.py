@@ -18,7 +18,7 @@ class ArsinoDevice:
 	def set_digital_output_off(self, pin):
 		self.query("D"+str(pin)+"e0e")
 		
-	def digital_toggle(self,pin):
+	def digital_output_toggle(self,pin):
 		current_state=self.get_digital_input(pin)
 		if current_state == 0:
 			self.set_digital_output_on(pin)
