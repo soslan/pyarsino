@@ -28,7 +28,7 @@ class ArsinoDevice:
 	def get_digital_input(self, pin):
 		return int(self.query("d"+str(pin)+"e"))
 	
-	def get_analog__input(self, pin):
+	def get_analog_input(self, pin):
 		return float(self.query("a"+str(pin)+"e"))
 		
 	def set_analog_output(self, pin, value):
@@ -39,3 +39,21 @@ class ArsinoDevice:
 		
 	def set_pin_to_out_mode(self, pin):
 		self.query("o"+str(pin)+"e")
+		
+	def get_analog_pin(self, pin):
+		return AnalogPin(self, pin)
+		
+class ArsinoPin():
+	def __init__(self, device, pin):
+		self.device=device
+		self.pin=pin
+		
+class AnalogPin(ArsinoPin):
+	def get_voltage(self):
+		return self.device.get_analog_input(self.pin)
+		
+	
+		
+		
+		
+		
