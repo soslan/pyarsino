@@ -33,3 +33,9 @@ class ArsinoDevice:
 		
 	def set_analog_output(self, pin, value):
 		self.query("A"+str(pin)+"e"+str(value)+"e")
+		
+	def set_pin_to_input_mode(self, pin):
+		self.query("i"+str(pin)+"e")
+		
+	def set_pin_to_out_mode(self, pin):
+		self.query("o"+str(pin)+"e")
