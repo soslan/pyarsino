@@ -12,17 +12,24 @@ class ArsinoDevice:
 		response=self.serial.readline()
 		return response
 		
-	def digital_on(self, pin):
+	def set_digital_output_on(self, pin):
 		self.query("D"+str(pin)+"e1e")
 	
-	def digital_off(self, pin):
+	def set_digital_output_off(self, pin):
 		self.query("D"+str(pin)+"e0e")
 		
-	def get_digital(self, pin):
+	def digital_toggle(self,pin):
+		current_state=self.get_digital_input(pin)
+		if current_state == 0:
+			self.set_digital_output_on(pin)
+		else:
+			self.set_digital_output_off(pin)
+		
+	def get_digital_input(self, pin):
 		return int(self.query("d"+str(pin)+"e"))
 	
-	def get_analog(self, pin):
+	def get_analog__input(self, pin):
 		return float(self.query("a"+str(pin)+"e"))
 		
-	def set_analog(self, pin, value):
+	def set_analog_output(self, pin, value):
 		self.query("A"+str(pin)+"e"+str(value)+"e")
