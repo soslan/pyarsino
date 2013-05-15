@@ -37,7 +37,7 @@ class ArsinoDevice:
 	def set_pin_to_input_mode(self, pin):
 		self.query("i"+str(pin)+"e")
 		
-	def set_pin_to_out_mode(self, pin):
+	def set_pin_to_output_mode(self, pin):
 		self.query("o"+str(pin)+"e")
 		
 	def get_analog_pin(self, pin):
@@ -57,13 +57,13 @@ class AnalogPin(ArsinoPin):
 		
 class DigitalPin(ArsinoPin):
 	def turn_on(self):
-		self.device.set_digital_output_on()
+		self.device.set_digital_output_on(self.pin)
 		
 	def turn_off(self):
-		self.device.set_digital_output_off()
+		self.device.set_digital_output_off(self.pin)
 		
 	def toggle(self):
-		self.device.digital_output_toggle()
+		self.device.digital_output_toggle(self.pin)
 		
 	
 		
