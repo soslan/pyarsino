@@ -43,6 +43,9 @@ class ArsinoDevice:
 	def get_analog_pin(self, pin):
 		return AnalogPin(self, pin)
 		
+	def get_digital_pin(self, pin):
+		return DigitalPin(self, pin)
+		
 class ArsinoPin():
 	def __init__(self, device, pin):
 		self.device=device
@@ -52,7 +55,7 @@ class AnalogPin(ArsinoPin):
 	def get_voltage(self):
 		return self.device.get_analog_input(self.pin)
 		
-class DigitalPin(ArsuinoPin):
+class DigitalPin(ArsinoPin):
 	def turn_on(self):
 		self.device.set_digital_output_on()
 		
